@@ -6,7 +6,7 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
   ],
 });
-
+const iaprompt = require("./openai")
 // Liste de phrases pour la roue
 const phrasesRoulette = [
   "Le résultat de la roue est: **5x mirror**",
@@ -28,7 +28,7 @@ const kindMessage = [
   "J'espère tu vas perdre",
   "Let's go bench la semaine pro hein",
   "Force on est pas ensemble",
-  "Votez rouge à la prédit",
+  "Votez rouge à la prédi",
   "100% tu perds sale incapable",
   "Jvais petez mon crâne déjà t'es nul en plus tu te mets de défis... jvais hurlax vraiment là",
   "EZ PREDI ROUGE GO GO GO"
@@ -64,6 +64,10 @@ client.on("messageCreate", (message) => {
       // Envoie la phrase dans le canal où la commande a été appelée
       message.reply(randomPhrase);
     }
+  }
+
+  if(command=="tellme") {
+    iaprompt.liamaPrompt(args)
   }
 });
 console.log(process.env.TOKEN)
