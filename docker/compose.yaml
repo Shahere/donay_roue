@@ -1,0 +1,11 @@
+services:
+  app:
+    image: donay_roue:latest
+    container_name: donay_roue
+    restart: always
+    env_file:
+      - ../.env
+    ports:
+      - "3000:3000"
+    working_dir: /roue
+    command: ["npm", "run", "start"]
